@@ -1,3 +1,5 @@
+<h1>OBSERVAÇÕES</h1>
+-> Os arquivos gerados sempre ficam na raiz do projeto
 -> O projeto foi criado utilizando-se o netbeans.
 -> O projeto está de acordo com certo padrões, NÃO EXISTE uma função principal, apenas testes que comprovam o funcionamento das classes.
 -> Para executar COM O NETBEANS navegue até a pasta de testes, abra a classe de teste, clique com o botão direito e excute ou teste apenas o arquivo.
