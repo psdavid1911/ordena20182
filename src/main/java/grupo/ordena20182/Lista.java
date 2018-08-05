@@ -198,5 +198,4 @@ public class Lista<T extends Comparable<T>> extends ArrayList<T> implements Iter
     public T subtraiElemento(int indice){
         return remove(indice);
     }
-
 }
