@@ -1,4 +1,4 @@
-package grupo.ordena20182;
+package Base;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,7 +10,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 public class Grafico<TIPOX extends Comparable,TIPOY extends Number>{
 
-    Grafico(Lista<Par<TIPOX,TIPOY>> dados,String NomeDaSerie,String rotuloX,String rotuloY,String titulo,int altura,int largura){
+    public Grafico(Lista<Par<TIPOX,TIPOY>> dados,String NomeDaSerie,String rotuloX,String rotuloY,String titulo,int altura,int largura){
         try{
             DefaultCategoryDataset conjuntoDeDados=new DefaultCategoryDataset();
             File arquivo=new File(titulo+".jpeg");

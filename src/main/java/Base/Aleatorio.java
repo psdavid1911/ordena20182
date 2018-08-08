@@ -1,4 +1,4 @@
-package grupo.ordena20182;
+package Base;
 import java.util.Random;
 
 public class Aleatorio{
@@ -27,6 +27,12 @@ public class Aleatorio{
     public static Lista<Integer> novaLista(int tamanhoDaLista,int valorMinimo,int valorMaximo){
         Lista<Integer> lista=new Lista<Integer>();
         for(int i=0;i<tamanhoDaLista;i++) lista.add(novoNumero(valorMinimo,valorMaximo));
+        return lista;
+    }
+
+    public static Lista<Integer> novaListaPiorCaso(int tamanhoDaLista,int valorMaximo){
+        Lista<Integer> lista=new Lista<Integer>();
+        for(int i=0;i<tamanhoDaLista;i++) lista.add(--valorMaximo);
         return lista;
     }
 }

@@ -1,4 +1,4 @@
-package grupo.ordena20182;
+package Base;
 
 public class Par<X extends Comparable,Y> implements Comparable<Par<X,Y>>{
 
