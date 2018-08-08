@@ -12,9 +12,7 @@ public class AleatorioTest{
             listas.add(Aleatorio.novaLista(1000,-10,10));
             pares.adiciona(new Par(tamanho,System.nanoTime()-temp));
         }
-        GraficoDeLinha<Integer,Long> grafico=new GraficoDeLinha<>();
-        grafico.adicionaConjuntoDeDados(pares,"Tempos de construção em nanossegundos");
-        grafico.criaGrafico("Tamanho das listas","Tempos(ns)","GraficoDeTempos");
+        new Grafico<>(pares,"Tempos de construção em nanossegundos","Tamanho das listas","Tempos(ns)","GraficoDeTempos",800,600);
     }
 
     @Test public void bubble(){
@@ -42,9 +40,7 @@ public class AleatorioTest{
             listas.set(i,Ordena.bubbleSort(listas.get(i)));
             pares.adiciona(new Par(tamanhos.get(i),System.nanoTime()-temp));
         }
-        GraficoDeLinha<Integer,Long> grafico=new GraficoDeLinha<>();
-        grafico.adicionaConjuntoDeDados(pares,"Tempos de construção em nanossegundos");
-        grafico.criaGrafico("Tamanho das listas","Tempos(ns)","GraficoBubbleSort");
+        new Grafico<>(pares,"Tempos de construção em nanossegundos","Tamanho das listas","Tempos(ns)","GraficoBubbleSort",800,600);
     }
 
     @Test public void testSelection(){
@@ -58,8 +54,6 @@ public class AleatorioTest{
             listas.set(i,Ordena.selectionSort(listas.get(i)));
             pares.adiciona(new Par(tamanhos.get(i),System.nanoTime()-temp));
         }
-        GraficoDeLinha<Integer,Long> grafico=new GraficoDeLinha<>();
-        grafico.adicionaConjuntoDeDados(pares,"Tempos de construção em nanossegundos");
-        grafico.criaGrafico("Tamanho das listas","Tempos(ns)","GraficoSelectionSort");
+        new Grafico<Integer,Long>(pares,"Tempos de construção em nanossegundos","Tamanho das listas","Tempos(ns)","GraficoSelectionSort",800,600);
     }
 }
