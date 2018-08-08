@@ -25,7 +25,7 @@ public class Teste_eficiencia_insercao{
                 "Grafico Metodo Insercao Melhor Caso",
                 "Tamanho das listas",
                 "Tempos de construção em milissegundos",
-                "Grafico Metodo Insercao Melhor Caso",
+                "insercao_m_caso",
                 800,
                 600
         );

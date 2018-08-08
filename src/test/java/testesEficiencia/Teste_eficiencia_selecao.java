@@ -25,7 +25,7 @@ public class Teste_eficiencia_selecao{
                 "Grafico Metodo Selecao Melhor Caso",
                 "Tamanho das listas",
                 "Tempos de construção em milissegundos",
-                "Grafico Metodo Selecao Melhor Caso",
+                "selecao_m_caso",
                 800,
                 600
         );
