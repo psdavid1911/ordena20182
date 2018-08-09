@@ -4,7 +4,7 @@ import Base.Grafico;
 import Base.Lista;
 import Base.Par;
 import Base.Serie;
-import Ordenacao.Bolha;
+import Ordenacao.Selecao;
 import java.util.ArrayList;
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ public class Teste_eficiencia_selecao{
         for(Integer t:tamanhos) listas.add(Aleatorio.novaLista(t,-10,10));
         for(int i=0;i<listas.size();i++) {
             Long temp=System.currentTimeMillis();
-            listas.set(i,Bolha.ordena(listas.get(i)));
+            listas.set(i,Selecao.ordena(listas.get(i)));
             pares.add(new Par(tamanhos.get(i),System.currentTimeMillis()-temp));
         }
         new Grafico<>(
