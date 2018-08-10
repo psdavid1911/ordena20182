@@ -1,4 +1,4 @@
-package grupo.poo;
+
 import java.awt.Rectangle;
 
 /**

@@ -1,60 +1,47 @@
-package grupo.poo;
-import java.awt.Polygon;
+
+import java.awt.geom.*;
+
 /**
- * Um triangulo que pode ser manipulado e desenha a si proprio numa janela
+ * Um circulo que pode ser manipulado e desenha a si proprio numa janela
  * grafica.
  *
  * @author Michael Kolling and David J. Barnes
  * @version 2008.03.30
  */
-public class Triangulo{
+public class Circulo{
 
-    private int altura;
-    private int largura;
+    private int diametro;
     private int posicaoX;
     private int posicaoY;
     private String cor;
     private boolean estaVisivel;
 
-    public Triangulo(int altura,int largura,int posicaoX,int posicaoY,String cor,boolean estaVisivel){
-        this.altura=altura;
-        this.largura=largura;
+    public Circulo(int diametro,int posicaoX,int posicaoY,String cor,boolean estaVisivel){
+        this.diametro=diametro;
         this.posicaoX=posicaoX;
         this.posicaoY=posicaoY;
         this.cor=cor;
         this.estaVisivel=estaVisivel;
     }
-    
-    
 
     /**
-     * Cria um novo triangulo na posicao e cor padrao.
+     * Cria um novo circulo na posicao e cor padrao.
      */
-    public Triangulo(){
-        altura=30;
-        largura=40;
-        posicaoX=50;
-        posicaoY=15;
-        cor="verde";
+    public Circulo(){
+        diametro=30;
+        posicaoX=20;
+        posicaoY=60;
+        cor="azul";
         estaVisivel=false;
     }
 
     /**
-     * Método de acesso ao campo altura
+     * Método de acesso ao campo diametro
      *
-     * @return A altura do triângulo
+     * @return O diâmetro do círculo
      */
-    public int getAltura(){
-        return altura;
-    }
-
-    /**
-     * Método de acesso ao campo altura
-     *
-     * @return A largura do triângulo
-     */
-    public int getLargura(){
-        return largura;
+    public int getDiametro(){
+        return diametro;
     }
 
     /**
@@ -67,7 +54,7 @@ public class Triangulo{
     }
 
     /**
-     * Torna esse triangulo visivel. Se ele ja estiver visivel nao faz nada.
+     * Torna esse circulo visivel. Se ele ja estiver visivel nao faz nada.
      */
     public void tornaVisivel(){
         estaVisivel=true;
@@ -75,7 +62,7 @@ public class Triangulo{
     }
 
     /**
-     * Torna esse triangulo invisivel. Se ele ja estiver invisivel nao faz nada.
+     * Torna esse circulo invisivel. Se ele ja estiver invisivel nao faz nada.
      */
     public void tornaInvisivel(){
         erase();
@@ -83,35 +70,35 @@ public class Triangulo{
     }
 
     /**
-     * Move o triangulo 20 pixels para a direita.
+     * Move o circulo 20 pixels para a direita.
      */
     public void direita(){
         moveHorizontal(20);
     }
 
     /**
-     * Move o triangulo 20 pixels para a esquerda.
+     * Move o circulo 20 pixels para a esquerda.
      */
     public void esquerda(){
         moveHorizontal(-20);
     }
 
     /**
-     * Move o triangulo 20 pixels para cima.
+     * Move o circulo 20 pixels para cima.
      */
     public void sobe(){
         moveVertical(-20);
     }
 
     /**
-     * Move o triangulo 20 pixels para baixo.
+     * Move o circulo 20 pixels para baixo.
      */
     public void desce(){
         moveVertical(20);
     }
 
     /**
-     * Move o triangulo na horizontal por 'distancia' pixels.
+     * Move o circulo na horizontal por 'distancia' pixels.
      *
      * @param distancia Distancia que o objeto sera movido para direita se
      * positivo ou para esquerda se negativo
@@ -123,7 +110,7 @@ public class Triangulo{
     }
 
     /**
-     * Move o triangulo na vertical por 'distancia' pixels.
+     * Move o circulo na vertical por 'distancia' pixels.
      *
      * @param distancia Distancia que o objeto sera movido para baixo se
      * positivo ou para cima se negativo
@@ -135,7 +122,7 @@ public class Triangulo{
     }
 
     /**
-     * Move lentamente o triangulo na horizontal por 'distancia' pixels.
+     * Move lentamente o circulo na horizontal por 'distancia' pixels.
      *
      * @param distancia Distancia que o objeto sera movido para direita se
      * positivo ou para esquerda se negativo
@@ -154,7 +141,7 @@ public class Triangulo{
     }
 
     /**
-     * Move lentamente o triangulo na vertical por 'distancia' pixels.
+     * Move lentamente o circulo na vertical por 'distancia' pixels.
      *
      * @param distancia Distancia que o objeto sera movido para baixo se
      * positivo ou para cima se negativo
@@ -173,16 +160,13 @@ public class Triangulo{
     }
 
     /**
-     * Muda a altura e largura do triangulo(em pixels). Altura e largura devem
-     * ser >= 0.
+     * Muda o tamanho do diametro do circulo(em pixels). Tamanho deve ser >= 0.
      *
-     * @param novaAltura Nova altura do triangulo. Deve ser maior que zero.
-     * @param novaLargura Nova largura do triangulo. Deve ser maior que zero.
+     * @param novoDiametro Novo diametro do circulo. Deve ser maior que zero.
      */
-    public void setTamanho(int novaAltura,int novaLargura){
+    public void setDiametro(int novoDiametro){
         erase();
-        altura=novaAltura;
-        largura=novaLargura;
+        diametro=novoDiametro;
         draw();
     }
 
@@ -198,20 +182,19 @@ public class Triangulo{
     }
 
     /**
-     * Desenha o triangulo com as especificacoes atuais na janela grafica.
+     * Desenha o circulo com as especificaçoes atuais na janela grafica.
      */
     private void draw(){
         if(estaVisivel){
             TelaGrafica canvas=TelaGrafica.obtenhaTelaGrafica();
-            int[] xpoints={posicaoX,posicaoX+(largura/2),posicaoX-(largura/2)};
-            int[] ypoints={posicaoY,posicaoY+altura,posicaoY+altura};
-            canvas.draw(this,cor,new Polygon(xpoints,ypoints,3));
+            canvas.draw(this,cor,new Ellipse2D.Double(posicaoX,posicaoY,
+                    diametro,diametro));
             canvas.wait(10);
         }
     }
 
     /**
-     * Apaga o triangulo da janela grafica.
+     * Apaga o circulo da janela grafica.
      */
     private void erase(){
         if(estaVisivel){
