@@ -8,13 +8,13 @@ import Ordenacao.Bolha;
 import java.util.ArrayList;
 import org.junit.Test;
 
-public class Teste_eficiencia_bolha{
+public class Teste_eficiencia_bolha_pior{
 
     @Test public void teste_eficiencia_bolha(){
         Lista<Integer> tamanhos=new Lista<>(1,10,100,1000,10000,20000,30000,60000);
         Lista<Lista<Integer>> listas=new Lista<>();
         ArrayList<Par<Integer,Long>> pares=new ArrayList<>();
-        for(Integer t:tamanhos) listas.add(Aleatorio.novaLista(t,-10,10));
+        for(Integer t:tamanhos) listas.add(Aleatorio.novaListaPiorCaso(t,10));
         for(int i=0;i<listas.size();i++) {
             Long temp=System.currentTimeMillis();
             listas.set(i,Bolha.ordena(listas.get(i)));
@@ -22,10 +22,10 @@ public class Teste_eficiencia_bolha{
         }
         new Grafico<>(
                 new Serie("Tempos(ms)",pares),
-                "Grafico Metodo Bolha Melhor Caso",
+                "Grafico Metodo Bolha Pior Caso",
                 "Tamanho das listas",
                 "Tempos de construção em milissegundos",
-                "bolha_m_caso",
+                "bolha_p_caso",
                 800,
                 600
         );
