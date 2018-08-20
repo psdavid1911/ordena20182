@@ -1,6 +1,6 @@
-OBSERVAÇÕES (ATUALIZADO DIA 8 DE AGOSTO!)
+OBSERVAÇÕES (ATUALIZADO DIA 20 DE AGOSTO!)
 
--> Os métodos de ordenação foram separados em arquivos.
+-> Os métodos de ordenação foram simplificados e adequados para utilizar automaticamente o tamanho integral das listas.
 -> Antes de executar qualquer ação com o aprojeto, clique com botão direito e mande limpar e executar, assim o maven carrega as dependências.
 -> Os arquivos gerados sempre ficam na raiz do projeto
 -> O projeto foi criado utilizando-se o netbeans.
