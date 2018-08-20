@@ -1,16 +1,15 @@
 package Ordenacao;
+
 import Base.Lista;
 
 public class Insercao{
 
-    public static Lista<Integer> ordena(Lista<Integer> lista){
-        for(int i=0;i<lista.size();i++) {
-            int a=lista.get(i);
-            for(int j=i-1;j>=0&&lista.get(j)>a;j--) {
-                lista.set(j+1,lista.get(j));
-                lista.set(j,a);
-            }
+    public static <T extends Comparable<T>> void ordena(Lista<T> lista){
+        for(int i=1, j; i<lista.size(); i++){
+            T aux=lista.get(i);
+            for(j=i; (j>0)&&(lista.get(j-1).compareTo(aux)>0); j--)
+                lista.set(j, lista.get(j-1));
+            lista.set(j, aux);
         }
-        return lista;
     }
 }

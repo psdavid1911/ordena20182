@@ -2,33 +2,24 @@ package Ordenacao;
 
 import Base.Lista;
 
-public class Rapido {
+public class Rapido{
 
-    public static Lista<Integer> ordena(Lista<Integer> vetor, int inicio, int fim) {
-        if (inicio < fim) {
-            int posicaoPivo = separar(vetor, inicio, fim);
-            ordena(vetor, inicio, posicaoPivo - 1);
-            ordena(vetor, posicaoPivo + 1, fim);
-        }
-        return vetor;
+    public static <T extends Comparable<T>> void ordena(Lista<T> vetor){
+        rapido(vetor, 0, vetor.size()-1);
     }
 
-    public static int separar(Lista<Integer> vetor, int inicio, int fim) {
-        int pivo = vetor.get(inicio);
-        int i = inicio + 1, f = fim;
-        while (i <= f) {
-            if (vetor.get(i) <= pivo) {
-                i++;
-            } else if (pivo < vetor.get(f)) {
-                f--;
-            } else {
-                vetor.trocaElementos(i, f);
-                i++;
-                f--;
-            }
+    private static <T extends Comparable<T>> void rapido(Lista<T> vetor, int menor, int maior){
+        if(vetor==null||vetor.isEmpty())return;
+        if(menor>=maior)return;
+        int meio=menor+(maior-menor)/2;
+        T pivo=vetor.get(meio);
+        int i=menor, j=maior;
+        while(i<=j){
+            while(vetor.get(i).compareTo(pivo)<0)i++;
+            while(vetor.get(j).compareTo(pivo)>0)j--;
+            if(i<=j)vetor.trocaElementos(i++, j--);
         }
-        vetor.set(inicio, vetor.get(f));
-        vetor.set(f, pivo);
-        return f;
+        if(menor<j)rapido(vetor, menor, j);
+        if(maior>i)rapido(vetor, i, maior);
     }
 }
