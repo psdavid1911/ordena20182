@@ -20,4 +20,8 @@ public class Serie<X, Y>{
     public void adiciona(X x, Y y){
         pares.add(new Par<X, Y>(x, y));
     }
+
+    public String getNome(){
+        return nomeDaColecao;
+    }
 }

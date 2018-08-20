@@ -1,37 +1,51 @@
 package Base;
 
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.xy.XYSplineRenderer;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-import static org.jfree.chart.JFreeChart.DEFAULT_TITLE_FONT;
-import static org.jfree.ui.RectangleInsets.ZERO_INSETS;
 
-public class Grafico<X extends Number, Y extends Number>{
+public class Grafico{
 
-    public Grafico(Serie<X, Y> s, String nomeDoGrafico, String nomeDoEixoX, String nomeDoEixoY, String nomeDoArquivo, int largura, int altura){
-        XYSeries serie=new XYSeries(nomeDoEixoY);
-        for(Par<X, Y> p:s.pares)serie.add(p.x, p.y);
-        XYSeriesCollection colecao=new XYSeriesCollection(serie);
-        //XYSplineRenderer renderizador=new XYSplineRenderer(1000);
-        XYLineAndShapeRenderer renderizador=new XYLineAndShapeRenderer();
-        NumberAxis x=new NumberAxis(nomeDoEixoX);
-        x.setAutoRange(true);
-        NumberAxis y=new NumberAxis(nomeDoEixoY);
-        XYPlot tela=new XYPlot(colecao, x, y, renderizador);
-        JFreeChart grafico=new JFreeChart(nomeDoGrafico, DEFAULT_TITLE_FONT, tela, true);
-        grafico.setAntiAlias(true);
-        grafico.setPadding(ZERO_INSETS); // quadrado no meio fica menor
+    public static <X extends Number, Y extends Number> void criaGrafico(Serie<X, Y> serie, String nomeDoGrafico, String nomeX, String nomeY, String nomeArquivo, int largura, int altura){
+        JFreeChart grafico=ChartFactory.createXYLineChart(nomeDoGrafico, nomeX, nomeY, criaColecaoDeSerie(serie), PlotOrientation.VERTICAL, true, true, true);
+        grafico.getXYPlot().setRenderer(new XYSplineRenderer(1000)); // Suaviza as linhas
         try{
-            ChartUtilities.saveChartAsJPEG(new File(nomeDoArquivo+".jpeg"), grafico, largura, altura);
+            ChartUtilities.saveChartAsJPEG(new File(nomeArquivo+".jpeg"), grafico, largura, altura);
         }catch(IOException ex){
-            Logger.getLogger(Grafico.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
+    }
+
+    public static <X extends Number, Y extends Number> void criaGrafico(Series<X, Y> series, String nomeDoGrafico, String nomeX, String nomeY, String nomeArquivo, int largura, int altura){
+        JFreeChart grafico=ChartFactory.createXYLineChart(nomeDoGrafico, nomeX, nomeY, criaColecaoDeSeries(series), PlotOrientation.VERTICAL, true, true, true);
+        grafico.getXYPlot().setRenderer(new XYSplineRenderer(1000)); // Suaviza as linhas
+        try{
+            ChartUtilities.saveChartAsJPEG(new File(nomeArquivo+".jpeg"), grafico, largura, altura);
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    private static <X extends Number, Y extends Number> XYSeriesCollection criaColecaoDeSerie(Serie<X, Y> s){
+        XYSeries serie=new XYSeries(s.nomeDaColecao);
+        for(Par<X, Y> p:s.pares)
+            serie.add(p.x, p.y);
+        return new XYSeriesCollection(serie);
+    }
+
+    private static <X extends Number, Y extends Number> XYSeriesCollection criaColecaoDeSeries(Series<X, Y> series){
+        XYSeriesCollection colecaoDeSeries=new XYSeriesCollection();
+        for(Serie<X, Y> serie:series.colecao){
+            XYSeries serieAuxiliar=new XYSeries(serie.getNome());
+            for(Par<X, Y> par:serie.pares)
+                serieAuxiliar.add(par.x, par.y);
+            colecaoDeSeries.addSeries(serieAuxiliar);
+        }
+        return colecaoDeSeries;
     }
 }

@@ -1,13 +1,13 @@
 package testesEficiencia;
 
 import Base.Aleatorio;
-import Base.Grafico;
 import Base.Lista;
 import Base.Par;
 import Base.Serie;
 import Ordenacao.Bolha;
 import java.util.ArrayList;
 import org.junit.Test;
+import static Base.Grafico.criaGrafico;
 
 public class Teste_eficiencia_bolha{
 
@@ -22,7 +22,7 @@ public class Teste_eficiencia_bolha{
             Bolha.ordena(listas.get(i));
             pares.add(new Par(tamanhos.get(i), System.currentTimeMillis()-temp));
         }
-        new Grafico<>(
+        criaGrafico(
                 new Serie("Tempos(ms)", pares),
                 "Grafico Metodo Bolha Melhor Caso",
                 "Tamanho das listas",

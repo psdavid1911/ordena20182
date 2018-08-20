@@ -22,7 +22,7 @@ public class Teste_eficiencia_bolha_pior{
             Bolha.ordena(listas.get(i));
             pares.add(new Par(tamanhos.get(i), System.currentTimeMillis()-temp));
         }
-        new Grafico<>(
+        Grafico.criaGrafico(
                 new Serie("Tempos(ms)", pares),
                 "Grafico Metodo Bolha Pior Caso",
                 "Tamanho das listas",

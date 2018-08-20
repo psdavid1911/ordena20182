@@ -12,7 +12,7 @@ import org.junit.Test;
 public class Teste_eficiencia_rapido{
 
     @Test public void teste_eficiencia_rapido(){
-        Lista<Integer> tamanhos=new Lista<>(1, 10, 100, 1000, 10000, 20000, 30000, 60000, 70000, 80000, 90000, 100000);
+        Lista<Integer> tamanhos=new Lista<>(1000, 10000, 20000, 30000, 60000, 70000, 80000, 90000, 100000);
         Lista<Lista<Integer>> listasDesordenadas=new Lista<>();
         ArrayList<Par<Integer, Long>> pares=new ArrayList<>();
         for(Integer t:tamanhos)
@@ -22,7 +22,7 @@ public class Teste_eficiencia_rapido{
             Rapido.ordena(listasDesordenadas.get(i));
             pares.add(new Par(tamanhos.get(i), System.currentTimeMillis()-temp));
         }
-        new Grafico<>(
+        Grafico.criaGrafico(
                 new Serie("Tempos(ms)", pares),
                 "Grafico Metodo Rapido Melhor Caso",
                 "Tamanho das listas",
