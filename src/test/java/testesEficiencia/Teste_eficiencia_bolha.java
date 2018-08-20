@@ -27,7 +27,7 @@ public class Teste_eficiencia_bolha{
                 "Grafico Metodo Bolha Melhor Caso",
                 "Tamanho das listas",
                 "Tempos de construção em milissegundos",
-                "bolha_m_caso",
+                "graficos/bolha_m_caso",
                 800,
                 600
         );

@@ -27,7 +27,7 @@ public class Teste_eficiencia_insercao_pior{
                 "Grafico Metodo Insercao Pior Caso",
                 "Tamanho das listas",
                 "Tempos de construção em milissegundos",
-                "insercao_p_caso",
+                "graficos/insercao_p_caso",
                 800,
                 600
         );

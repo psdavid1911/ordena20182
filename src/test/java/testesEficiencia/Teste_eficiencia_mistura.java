@@ -27,7 +27,7 @@ public class Teste_eficiencia_mistura{
                 "Grafico Metodo Mistura Melhor Caso",
                 "Tamanho das listas",
                 "Tempos de construção em milissegundos",
-                "mistura_m_caso",
+                "graficos/mistura_m_caso",
                 800,
                 600
         );

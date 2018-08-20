@@ -12,7 +12,7 @@ import org.junit.Test;
 public class Teste_eficiencia_rapido{
 
     @Test public void teste_eficiencia_rapido(){
-        Lista<Integer> tamanhos=new Lista<>(1, 10, 100, 1000, 10000, 20000, 30000);
+        Lista<Integer> tamanhos=new Lista<>(1, 10, 100, 1000, 10000, 20000, 30000, 60000);
         Lista<Lista<Integer>> listasDesordenadas=new Lista<>();
         ArrayList<Par<Integer, Long>> pares=new ArrayList<>();
         for(Integer t:tamanhos)
@@ -27,7 +27,7 @@ public class Teste_eficiencia_rapido{
                 "Grafico Metodo Rapido Melhor Caso",
                 "Tamanho das listas",
                 "Tempos de construção em milissegundos",
-                "rapido_m_caso",
+                "graficos/rapido_m_caso",
                 800,
                 600
         );

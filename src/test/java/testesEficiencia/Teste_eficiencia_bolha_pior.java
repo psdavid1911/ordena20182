@@ -27,7 +27,7 @@ public class Teste_eficiencia_bolha_pior{
                 "Grafico Metodo Bolha Pior Caso",
                 "Tamanho das listas",
                 "Tempos de construção em milissegundos",
-                "bolha_p_caso",
+                "graficos/bolha_p_caso",
                 800,
                 600
         );
