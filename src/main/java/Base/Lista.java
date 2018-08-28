@@ -3,7 +3,6 @@ package Base;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Consumer;
@@ -105,11 +104,7 @@ public class Lista<T extends Comparable<T>> extends ArrayList<T> implements Iter
     }
 
     public void ordena(){
-        sort(null);
-    }
-
-    public void ordena(Comparator comparador){
-        Collections.sort(this, comparador);
+        sort();
     }
 
     public List original(){
@@ -150,6 +145,10 @@ public class Lista<T extends Comparable<T>> extends ArrayList<T> implements Iter
      */
     public void removeTodos(Collection<T> colecao){
         removeAll(colecao);
+    }
+
+    public void sort(){
+        Collections.sort(this);
     }
 
     public Lista<T> subLista(int posicaoInicial, int posicaoFinal){
@@ -195,6 +194,14 @@ public class Lista<T extends Comparable<T>> extends ArrayList<T> implements Iter
      */
     public void trocaElementos(T elemento1, T elemento2){
         trocaElementos(indiceDoElemento(elemento1), indiceDoElemento(elemento2));
+    }
+
+    public T valorMaximo(){
+        return Collections.max(this);
+    }
+
+    public T valorMinimo(){
+        return Collections.min(this);
     }
 
     public boolean vazio(){
