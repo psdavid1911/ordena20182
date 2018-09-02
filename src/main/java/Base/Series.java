@@ -2,7 +2,7 @@ package Base;
 
 import java.util.ArrayList;
 
-public class Series<X, Y>{
+public class Series<X extends Comparable<X>, Y>{
 
     public ArrayList<Serie<X, Y>> colecao;
 

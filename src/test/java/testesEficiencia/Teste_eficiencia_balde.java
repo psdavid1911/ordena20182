@@ -4,12 +4,12 @@ import Base.Aleatorio;
 import Base.Lista;
 import Base.Par;
 import Base.Serie;
-import Ordenacao.Bolha;
+import Ordenacao.Balde;
 import java.util.ArrayList;
 import org.junit.Test;
 import static Base.Grafico.criaGrafico;
 
-public class Teste_eficiencia_bolha{
+public class Teste_eficiencia_balde{
 
     @Test public void teste_eficiencia_bolha(){
         Lista<Integer> tamanhos=new Lista<>(1, 10, 100, 1000, 10000, 20000, 30000, 60000);
@@ -19,7 +19,7 @@ public class Teste_eficiencia_bolha{
             listas.add(Aleatorio.novaLista(t, -10, 10));
         for(int i=0; i<listas.size(); i++){
             Long temp=System.currentTimeMillis();
-            Bolha.ordena(listas.get(i));
+            Balde.ordena(listas.get(i));
             pares.add(new Par(new Integer(tamanhos.get(i)).doubleValue(), new Long(System.currentTimeMillis()-temp).doubleValue() ));
         }
         criaGrafico(

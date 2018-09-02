@@ -32,6 +32,12 @@ public class Lista<T extends Comparable<T>> extends ArrayList<T> implements Iter
         super();
     }
 
+    public Lista(T valor, int capacidade){
+        super();
+        for(int i=0; i<capacidade; i++)
+            this.add(valor);
+    }
+
     public void adiciona(T elemento){
         add(elemento);
     }
@@ -103,6 +109,15 @@ public class Lista<T extends Comparable<T>> extends ArrayList<T> implements Iter
         clear();
     }
 
+    public int maiorLargura(){
+        int largura=0;
+        for(T elemelemento:this){
+            int aux=elemelemento.toString().length();
+            largura=aux>largura?aux:largura;
+        }
+        return largura;
+    }
+
     public void ordena(){
         sort();
     }
@@ -132,6 +147,15 @@ public class Lista<T extends Comparable<T>> extends ArrayList<T> implements Iter
 
     public T pegaAleatorio(){
         return pega((new Random()).nextInt(tamanho()));
+    }
+
+    public void preecher(T valor){
+        Collections.fill(this, valor);
+    }
+
+    public void preecher(int indiceInicial, int indiceFinal, T valor){
+        for(int i=indiceInicial; i<indiceFinal; i++)
+            this.set(i, valor);
     }
 
     public void preenche(){

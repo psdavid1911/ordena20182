@@ -5,20 +5,13 @@ import Base.Lista;
 public class Contagem{
 
     public static void ordena(Lista<Integer> lista){
+        int menor=lista.valorMinimo();
         int maior=lista.valorMaximo();
-        Lista<Integer> c=new Lista<>();
-        for(int i=0; i<maior; i++)c.add(0);
-        for(int i=0; i<lista.size(); i++)
-            c.set(lista.get(i)-1, c.get(lista.get(i)-1)+1);
-        for(int i=1; i<maior; i++)
-            c.set(i, c.get(i)+c.get(i-1));
-        Lista<Integer> b=new Lista<>();
-        for(Integer l:lista)b.add(0);
-        for(int i=0; i<b.size(); i++){
-            b.set(c.get(lista.get(i)-1)-1, lista.get(i));
-            c.set(lista.get(i)-1, c.get(lista.get(i)-1)-1);
+        int[] counts=new int[maior-menor+1];
+        for(int x:lista)counts[x-menor]++;
+        for(int i=0, current=0; i<counts.length; i++){
+            lista.preecher(current, current+counts[i], i+menor);
+            current+=counts[i];
         }
-        for(int i=0; i<b.size(); i++)
-            lista.set(i, b.get(i));
     }
 }

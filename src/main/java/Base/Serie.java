@@ -2,10 +2,10 @@ package Base;
 
 import java.util.ArrayList;
 
-public class Serie<X, Y>{
+public class Serie<X extends Comparable<X>, Y>{
 
-    public String nomeDaColecao;
-    public ArrayList<Par<X, Y>> pares;
+    private String nomeDaColecao;
+    private ArrayList<Par<X, Y>> pares;
 
     public Serie(String nomeDaColecao){
         this.nomeDaColecao=nomeDaColecao;
@@ -18,10 +18,26 @@ public class Serie<X, Y>{
     }
 
     public void adiciona(X x, Y y){
-        pares.add(new Par<X, Y>(x, y));
+        getPares().add(new Par<X, Y>(x, y));
     }
 
     public String getNome(){
+        return getNomeDaColecao();
+    }
+
+    public String getNomeDaColecao(){
         return nomeDaColecao;
+    }
+
+    public void setNomeDaColecao(String nomeDaColecao){
+        this.nomeDaColecao=nomeDaColecao;
+    }
+
+    public ArrayList<Par<X, Y>> getPares(){
+        return pares;
+    }
+
+    public void setPares(ArrayList<Par<X, Y>> pares){
+        this.pares=pares;
     }
 }

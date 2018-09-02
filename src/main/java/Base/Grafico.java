@@ -11,7 +11,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 public class Grafico{
 
-    public static <X extends Number, Y extends Number> void criaGrafico(Serie<X, Y> serie, String nomeDoGrafico, String nomeX, String nomeY, String nomeArquivo, int largura, int altura){
+    public static <X extends Comparable<X>, Y extends Number> void criaGrafico(Serie<Double, Double> serie, String nomeDoGrafico, String nomeX, String nomeY, String nomeArquivo, int largura, int altura){
         JFreeChart grafico=ChartFactory.createXYLineChart(nomeDoGrafico, nomeX, nomeY, criaColecaoDeSerie(serie), PlotOrientation.VERTICAL, true, true, true);
         grafico.getXYPlot().setRenderer(new XYSplineRenderer(1000)); // Suaviza as linhas
         try{
@@ -21,7 +21,7 @@ public class Grafico{
         }
     }
 
-    public static <X extends Number, Y extends Number> void criaGrafico(Series<X, Y> series, String nomeDoGrafico, String nomeX, String nomeY, String nomeArquivo, int largura, int altura){
+    public static <X extends Comparable<X>, Y extends Number> void criaGrafico(Series<Double, Double> series, String nomeDoGrafico, String nomeX, String nomeY, String nomeArquivo, int largura, int altura){
         JFreeChart grafico=ChartFactory.createXYLineChart(nomeDoGrafico, nomeX, nomeY, criaColecaoDeSeries(series), PlotOrientation.VERTICAL, true, true, true);
         grafico.getXYPlot().setRenderer(new XYSplineRenderer(1000)); // Suaviza as linhas
         try{
@@ -31,19 +31,19 @@ public class Grafico{
         }
     }
 
-    private static <X extends Number, Y extends Number> XYSeriesCollection criaColecaoDeSerie(Serie<X, Y> s){
-        XYSeries serie=new XYSeries(s.nomeDaColecao);
-        for(Par<X, Y> p:s.pares)
-            serie.add(p.x, p.y);
+    private static XYSeriesCollection criaColecaoDeSerie(Serie<Double, Double> s){
+        XYSeries serie=new XYSeries(s.getNomeDaColecao());
+        for(Par<Double, Double> p:s.getPares())
+            serie.add(p.getX(), p.getY());
         return new XYSeriesCollection(serie);
     }
 
-    private static <X extends Number, Y extends Number> XYSeriesCollection criaColecaoDeSeries(Series<X, Y> series){
+    private static XYSeriesCollection criaColecaoDeSeries(Series<Double, Double> series){
         XYSeriesCollection colecaoDeSeries=new XYSeriesCollection();
-        for(Serie<X, Y> serie:series.colecao){
+        for(Serie<Double, Double> serie:series.colecao){
             XYSeries serieAuxiliar=new XYSeries(serie.getNome());
-            for(Par<X, Y> par:serie.pares)
-                serieAuxiliar.add(par.x, par.y);
+            for(Par<Double, Double> par:serie.getPares())
+                serieAuxiliar.add(par.getX(), par.getY());
             colecaoDeSeries.addSeries(serieAuxiliar);
         }
         return colecaoDeSeries;
