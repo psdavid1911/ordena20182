@@ -11,8 +11,8 @@ import static Base.Grafico.criaGrafico;
 
 public class Teste_eficiencia_balde{
 
-    @Test public void teste_eficiencia_bolha(){
-        Lista<Integer> tamanhos=new Lista<>(1, 10, 100, 1000, 10000, 20000, 30000, 60000);
+    @Test public void teste_eficiencia_balde(){
+        Lista<Integer> tamanhos=new Lista<>(1000, 10000, 20000, 30000, 60000, 70000, 80000, 90000, 100000);
         Lista<Lista<Integer>> listas=new Lista<>();
         ArrayList<Par<Integer, Long>> pares=new ArrayList<>();
         for(Integer t:tamanhos)
@@ -24,10 +24,10 @@ public class Teste_eficiencia_balde{
         }
         criaGrafico(
                 new Serie("Tempos(ms)", pares),
-                "Grafico Metodo Bolha Melhor Caso",
+                "Grafico Metodo Balde Melhor Caso",
                 "Tamanho das listas",
                 "Tempos de construção em milissegundos",
-                "graficos/bolha_m_caso",
+                "graficos/balde_m_caso",
                 800,
                 600
         );

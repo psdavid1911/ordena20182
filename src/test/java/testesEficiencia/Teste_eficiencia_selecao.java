@@ -13,7 +13,7 @@ public class Teste_eficiencia_selecao{
 
     @Test public void testSelection(){
         Lista<Lista<Integer>> listas=new Lista<>(); // nunca sera usado
-        Lista<Integer> tamanhos=new Lista<>(1, 10, 100, 1000, 10000, 20000, 30000, 60000);
+        Lista<Integer> tamanhos=new Lista<>(1000, 10000, 20000, 30000, 60000, 70000, 80000, 90000, 100000);
         ArrayList<Par<Integer, Long>> pares=new ArrayList<>();
         for(Integer t:tamanhos)
             listas.add(Aleatorio.novaLista(t, -10, 10));

@@ -13,7 +13,7 @@ public class Teste_eficiencia_casca_pior{
 
     @Test
     public void teste_eficiencia_casca(){
-        Lista<Integer> tamanhos=new Lista<>(1, 10, 100, 1000, 10000, 20000, 30000, 60000);
+        Lista<Integer> tamanhos=new Lista<>(1000, 10000, 20000, 30000, 60000, 70000, 80000, 90000, 100000);
         Lista<Lista<Integer>> listas=new Lista<>();
         ArrayList<Par<Integer, Long>> pares=new ArrayList<>();
         for(Integer t:tamanhos)
